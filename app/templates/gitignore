@@ -1,0 +1,8 @@
+node_modules/
+img/
+dist/
+js/bower/
+.sass-cache/
+init.js
+main.css
+package.json

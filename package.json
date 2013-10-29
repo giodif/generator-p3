@@ -1,0 +1,43 @@
+{
+  "name": "generator-p3",
+  "version": "0.0.0",
+  "description": "A simple Yeomanwebsite generator to start lightweight p3 client projects",
+  "keywords": [
+    "yeoman-generator",
+    "p3",
+    "website"
+  ],
+  "homepage": "https://github.com/giodif/generator-p3",
+  "bugs": "https://github.com/giodif/generator-p3/issues",
+  "author": {
+    "name": "Giovanni DiFeterici",
+    "email": "gdifeterici@gmail.com",
+    "url": "https://github.com/giodif"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/giodif/generator-p3.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0-rc.1"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}

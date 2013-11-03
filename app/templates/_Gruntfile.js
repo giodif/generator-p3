@@ -1,19 +1,9 @@
 module.exports = function( grunt ){
     
     grunt.initConfig({
-
-        concurrent : {
-            tasks : [
-                'compass:verbose',
-                'watch'
-            ],
-            options : {
-                logConcurrentOutput : true
-            }
-        },
         
+        //do compass stuff
         compass : {
-
             options : {
                 sassDir : 'scss',
                 cssDir : ''
@@ -27,7 +17,7 @@ module.exports = function( grunt ){
                 options : {
                     outputStyle : 'compressed'
                 }
-            },
+            }
         },
 
         //only used for js files
@@ -36,6 +26,10 @@ module.exports = function( grunt ){
             scripts : {
                 files : [ 'js/*.js', 'js/**/*.js' ],
                 tasks : [ 'concat:tobrowser' ]
+            },
+            styles : {
+                files : [ 'scss/*.scss' ],
+                tasks : [ 'compass:verbose' ]
             }
         },
 
@@ -151,12 +145,12 @@ module.exports = function( grunt ){
     grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
     grunt.loadNpmTasks( 'grunt-contrib-compress' );
     grunt.loadNpmTasks( 'grunt-contrib-copy' );
-    grunt.loadNpmTasks( 'grunt-concurrent' );
+    //grunt.loadNpmTasks( 'grunt-concurrent' );
 
     grunt.registerTask(
         'default',
         [
-            'concurrent'
+            'watch'
         ]
     );
     
@@ -187,3 +181,13 @@ module.exports = function( grunt ){
         ]
     );
 };
+
+
+
+
+
+
+
+
+
+

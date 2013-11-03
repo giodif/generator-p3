@@ -63,15 +63,29 @@ module.exports = function( grunt ){
         copy : {
             main : {
                 files : [
-                    { 
+                    {
                         expand : true,
-                        src : [ 
+                        src : [
                             'init.js',
                             'index.php',
                             'main.css',
                             'inc/**'
                         ],
                         dest : 'dist/'
+                    },
+                ]
+            },
+            zip : {
+                files : [
+                    {
+                        expand : true,
+                        cwd : 'dist',
+                        src : [
+                            'index.php',
+                            'inc/**',
+                            'img/**'
+                        ],
+                        dest : 'zip/'
                     },
                 ]
             }
@@ -103,6 +117,22 @@ module.exports = function( grunt ){
             }
         },
 
+        //compresses all files with gzip for even more minification
+        compress : {
+            main : {
+                options : {
+                    mode : 'gzip'
+                },
+                expand : true,
+                cwd : 'dist/',
+                src : [
+                    'init.js',
+                    'main.css'
+                ],
+                dest : 'zip/'
+            }
+        },
+
         //list of all js files that are to be concatonated
         //IMPORTANT: these files need to be listed in order of compilation
         //concat does not handle dependency issues
@@ -119,6 +149,7 @@ module.exports = function( grunt ){
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     grunt.loadNpmTasks( 'grunt-contrib-compass' );
     grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
+    grunt.loadNpmTasks( 'grunt-contrib-compress' );
     grunt.loadNpmTasks( 'grunt-contrib-copy' );
     grunt.loadNpmTasks( 'grunt-concurrent' );
 
@@ -142,18 +173,17 @@ module.exports = function( grunt ){
         'stage',
         [
             'build',
-            'copy',
+            'copy:main',
             'imagemin'
         ]
     );
+
+    grunt.registerTask(
+        'zip',
+        [
+            'stage',
+            'compress',
+            'copy:zip'
+        ]
+    );
 };
-
-
-
-
-
-
-
-
-
-

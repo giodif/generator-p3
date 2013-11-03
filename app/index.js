@@ -69,6 +69,7 @@ P3Generator.prototype.app = function app() {
     this.mkdir('inc');
     this.mkdir('img');
     this.mkdir('dist');
+    this.mkdir('zip');
 
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');

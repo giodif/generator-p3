@@ -5,6 +5,7 @@ var yeoman = require('yeoman-generator');
 
 
 var P3Generator = module.exports = function P3Generator(args, options, config) {
+    
     yeoman.generators.Base.apply(this, arguments);
 
     this.on('end', function () {
@@ -71,13 +72,13 @@ P3Generator.prototype.app = function app() {
     this.mkdir('dist');
     this.mkdir('zip');
 
-    this.copy('_package.json', 'package.json');
-    this.copy('_bower.json', 'bower.json');
-    this.copy('_Gruntfile.js', 'Gruntfile.js');
+    this.template('_package.json', 'package.json');
+    this.template('_bower.json', 'bower.json');
+    this.template('_Gruntfile.js', 'Gruntfile.js');
 
     //html templates
-    this.copy('index.php', 'index.php');
-    this.copy('open.php', 'inc/open.php');
+    this.template('index.php', 'index.php');
+    this.template('open.php', 'inc/open.php');
     this.copy('close.php', 'inc/close.php');
 
     //default js file

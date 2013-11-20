@@ -1,6 +1,6 @@
 {
   "name": "generator-p3",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple Yeoman website generator to start lightweight P3 client projects",
   "keywords": [
     "yeoman-generator",

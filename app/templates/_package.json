@@ -1,5 +1,5 @@
 {
-  "name": "<%= siteName %>",
+  "name": "<%= _.slugify(siteName) %>",
   "version": "<%= version %>",
   "description": "<%= description %>",
   "devDependencies": {

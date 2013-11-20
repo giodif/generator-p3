@@ -1,7 +1,6 @@
 {
-  "name": "<%= siteName %>",
+  "name": "<%= _.slugify(siteName) %>",
   "version": "<%= version %>",
-  "description": "<%= description %>",
   "dependencies": {
     "normalize-scss": "~2.1.0",
     "modernizr": "~2.6.2",

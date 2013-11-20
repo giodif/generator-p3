@@ -3,6 +3,8 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 
+//New Version
+
 
 var P3Generator = module.exports = function P3Generator(args, options, config) {
     
@@ -29,7 +31,7 @@ P3Generator.prototype.askFor = function askFor() {
     var prompts = [{
         name: 'siteName',
         message: 'What do you want to call your site?',
-        default: 'p3'
+        default: 'p3 Site'
     },
     {
         name: 'version',
@@ -39,7 +41,7 @@ P3Generator.prototype.askFor = function askFor() {
     {
         name: 'description',
         message: 'Provide a short description of this site',
-        default: 'p3 client site'
+        default: 'A simple P3 client site'
     }];
 
     //this function consumes the prompts array and tosses each item to the callback
@@ -48,6 +50,8 @@ P3Generator.prototype.askFor = function askFor() {
         this.siteName = props.siteName;
         this.version  = props.version;
         this.description  = props.description;
+
+        console.log(props);
         
         cb();
 
@@ -71,21 +75,17 @@ P3Generator.prototype.app = function app() {
     this.mkdir('img');
     this.mkdir('dist');
     this.mkdir('zip');
-
-    this.template('_package.json', 'package.json');
-    this.template('_bower.json', 'bower.json');
-    this.template('_Gruntfile.js', 'Gruntfile.js');
-
-    //html templates
-    this.template('index.php', 'index.php');
-    this.template('open.php', 'inc/open.php');
     this.copy('close.php', 'inc/close.php');
 
-    //default js file
     this.copy('main.js', 'js/main.js');
-
-    //default scss files. Nothing included except a link to compass and normalize.scss
     this.copy('main.scss', 'scss/main.scss');
     this.copy('_layout.scss', 'scss/_layout.scss');
     this.copy('_typography.scss', 'scss/_typography.scss');
+
+    this.copy('_Gruntfile.js', 'Gruntfile.js');
+    this.template('index.php', 'index.php');
+    this.template('_bower.json', 'bower.json');
+    this.template('_package.json', 'package.json');
+
+    this.copy('open.php', 'inc/open.php');
 };
